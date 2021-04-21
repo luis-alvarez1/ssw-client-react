@@ -13,8 +13,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { useDrawerStyles } from './DrawerStyles';
+import theme from '../../theme';
 
 export const DrawerNavigation = ({ open, setOpen }) => {
+  const handleDrawerClose = () => {
+    console.log('click');
+    console.log(open);
+    setOpen(false);
+  };
+
   const classes = useDrawerStyles();
   return (
     <Drawer

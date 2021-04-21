@@ -1,8 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 
 const DRAWER_WIDTH = 240;
-
-export const useDrawerStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
