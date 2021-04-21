@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuIcon from '@material-ui/icons/Menu';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import SearchIcon from '@material-ui/icons/Search';
@@ -46,6 +47,15 @@ export const Header = (props) => {
           <div className={classes.grow} />
 
           <div className={classes.sectionDesktop}>
+            <IconButton
+              onClick={() => {
+                alert('clicked');
+              }}
+              edge='end'
+              color='inherit'
+            >
+              <MonetizationOnIcon />
+            </IconButton>
             <IconButton
               onClick={() => {
                 alert('clicked');
