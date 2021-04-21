@@ -67,4 +67,10 @@ export const DrawerNavigation = ({ open, setOpen }) => {
 
 DrawerNavigation.propTypes = {
   open: PropTypes.bool,
+  setOpen: PropTypes.func,
+};
+
+DrawerNavigation.defaultProps = {
+  open: false,
+  setOpen: () => {},
 };
