@@ -10,6 +10,7 @@ export const useHeaderStyles = makeStyles((theme) => ({
   titleWrapper: {
     display: 'flex',
     alignItems: 'center',
+    cursor: 'pointer',
   },
   title: {
     display: 'none',
@@ -17,6 +18,7 @@ export const useHeaderStyles = makeStyles((theme) => ({
       display: 'block',
     },
     marginLeft: theme.spacing(1),
+    color: theme.palette.white,
   },
   search: {
     position: 'relative',
@@ -60,5 +62,14 @@ export const useHeaderStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
+  },
+  iconBottomText: {
+    fontSize: '11px',
+  },
+  rightSectionIconContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyItems: 'center',
+    alignItems: 'center',
   },
 }));

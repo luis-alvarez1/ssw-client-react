@@ -1,73 +1,64 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+
+import {
+  Drawer,
+  List,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Icon,
+} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { useDrawerStyles } from './DrawerStyles';
-import theme from '../../theme';
+import theme from '../../core/theme';
+import { routes } from '../../routes/router/routes';
 
 export const DrawerNavigation = ({ open, setOpen }) => {
   const handleDrawerClose = () => {
-    console.log('click');
-    console.log(open);
     setOpen(false);
   };
 
   const classes = useDrawerStyles();
   return (
     <Drawer
-      variant='permanent'
-      className={clsx(classes.drawer, {
-        [classes.drawerOpen]: open,
-        [classes.drawerClose]: !open,
-      })}
+      className={classes.drawer}
+      variant='persistent'
+      anchor='left'
+      open={open}
       classes={{
-        paper: clsx({
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        }),
+        paper: classes.drawerPaper,
       }}
     >
-      <div className={classes.toolbar}>
+      <div className={classes.drawerHeader}>
         <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'rtl' ? (
-            <ChevronRightIcon />
-          ) : (
+          {theme.direction === 'ltr' ? (
             <ChevronLeftIcon />
+          ) : (
+            <ChevronRightIcon />
           )}
         </IconButton>
       </div>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+        {routes.map((route) => (
+          <ListItem button key={route.title}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <Icon>{route.icon}</Icon>
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={route.title} />
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <ListItem button key='logout'>
+        <ListItemIcon>
+          <Icon>logout</Icon>
+        </ListItemIcon>
+        <ListItemText primary='Logout' />
+      </ListItem>
     </Drawer>
   );
 };

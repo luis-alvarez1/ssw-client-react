@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+} from '@material-ui/core';
+
 import MenuIcon from '@material-ui/icons/Menu';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
@@ -12,7 +15,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { DrawerNavigation } from '../Drawer/Drawer';
 import { useHeaderStyles } from './HeaderStyles';
 
-export const Header = (props) => {
+export const Header = () => {
   const classes = useHeaderStyles();
   const [drawerOpened, setDrawerOpened] = useState(true);
 
@@ -43,6 +46,7 @@ export const Header = (props) => {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+            {/* TODO: FILTER VEHICLES BY NAME */}
             <InputBase
               placeholder='Search…'
               classes={{
@@ -56,21 +60,31 @@ export const Header = (props) => {
           <div className={classes.sectionDesktop}>
             <IconButton
               onClick={() => {
-                alert('clicked');
+                console.log('clicked');
               }}
               edge='end'
               color='inherit'
             >
-              <MonetizationOnIcon />
+              <div className={classes.rightSectionIconContainer}>
+                <MonetizationOnIcon />
+                <Typography className={classes.iconBottomText}>
+                  My Credits
+                </Typography>
+              </div>
             </IconButton>
             <IconButton
               onClick={() => {
-                alert('clicked');
+                console.log('clicked');
               }}
               edge='end'
               color='inherit'
             >
-              <AccountCircle />
+              <div className={classes.rightSectionIconContainer}>
+                <AccountCircle />
+                <Typography className={classes.iconBottomText}>
+                  Account
+                </Typography>
+              </div>
             </IconButton>
           </div>
         </Toolbar>
