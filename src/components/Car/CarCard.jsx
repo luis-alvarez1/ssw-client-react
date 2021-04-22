@@ -47,6 +47,12 @@ export const CarCard = ({ car }) => {
 };
 
 CarCard.propTypes = {
-  // TODO: define car shape based on gql
-  car: PropTypes.shape({}).isRequired,
+  car: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    stock: PropTypes.number.isRequired,
+    imgUrl: PropTypes.string.isRequired,
+  }).isRequired,
 };

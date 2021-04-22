@@ -8,7 +8,6 @@ import theme from './core/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* TODO: MOVE TO ROUTER */}
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>

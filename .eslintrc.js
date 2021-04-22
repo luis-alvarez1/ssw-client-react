@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    // warn, off, error
     'no-console': 'off',
     'implicit-arrow-linebreak': 'off',
     'no-return-await': 'off',
@@ -23,7 +24,6 @@ module.exports = {
     'linebreak-style': 'off',
     'consistent-return': 'off',
     'function-paren-newline': 'off',
-    camelcase: 'off',
     'import/prefer-default-export': 'off',
     'jsx-quotes': 'off',
     'object-curly-newline': 'off',
