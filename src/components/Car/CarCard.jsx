@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { useCarCardStyles } from './useCarCardStyles';
 
 export const CarCard = ({ car }) => {
+  console.log(car);
   const classes = useCarCardStyles();
 
   return (
@@ -51,6 +52,7 @@ CarCard.propTypes = {
     name: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    cylinderCapacity: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     stock: PropTypes.number.isRequired,
     imgUrl: PropTypes.string.isRequired,

@@ -13,7 +13,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    // warn, off, error
+    'arrow-body-style': 'off',
     'no-console': 'off',
     'implicit-arrow-linebreak': 'off',
     'no-return-await': 'off',

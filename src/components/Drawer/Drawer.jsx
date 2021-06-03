@@ -14,7 +14,7 @@ import {
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { useDrawerStyles } from './DrawerStyles';
-import theme from '../../core/theme';
+import theme from '../../core/theme/theme';
 import { routes } from '../../routes/router/routes';
 
 export const DrawerNavigation = ({ open, setOpen }) => {
