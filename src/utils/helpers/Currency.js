@@ -21,11 +21,10 @@ export const formatCurrency = (amount, options = {}) => {
   }
   amount = parseFloatSafe(amount);
 
-  // force to 2 digits - If there is no decimal, or the decimal is less than 2 digits
   if (
-    !Number.isSafeInteger(amount)
-    || String(amount).split('.').length < 2
-    || String(amount).split('.')[1].length <= 2
+    !Number.isSafeInteger(amount) ||
+    String(amount).split('.').length < 2 ||
+    String(amount).split('.')[1].length <= 2
   ) {
     amount = amount.toFixed(2);
   }

@@ -17,7 +17,7 @@ import { useHeaderStyles } from './HeaderStyles';
 
 export const Header = () => {
   const classes = useHeaderStyles();
-  const [drawerOpened, setDrawerOpened] = useState(true);
+  const [drawerOpened, setDrawerOpened] = useState(false);
 
   const handleDrawerOpen = () => {
     setDrawerOpened(true);

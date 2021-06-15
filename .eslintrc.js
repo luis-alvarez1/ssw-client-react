@@ -28,5 +28,6 @@ module.exports = {
     'jsx-quotes': 'off',
     'object-curly-newline': 'off',
     'react/self-closing-comp': 'warn',
+    'operator-linebreak': 'off',
   },
 };
