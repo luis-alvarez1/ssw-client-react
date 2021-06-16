@@ -29,5 +29,6 @@ module.exports = {
     'object-curly-newline': 'off',
     'react/self-closing-comp': 'warn',
     'operator-linebreak': 'off',
+    'react/prop-types': 'off',
   },
 };

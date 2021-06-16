@@ -1,8 +1,9 @@
 export const getItem = (key) => {
-  return localStorage.getItem(key);
+  const obj = localStorage.getItem(key);
+  return obj;
 };
 export const setItem = (key, obj) => {
-  return localStorage.setItem(key, obj);
+  localStorage.setItem(key, obj);
 };
 export const removeItem = (key) => {
   localStorage.removeItem(key);

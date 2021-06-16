@@ -1,1 +1,1 @@
-export const USER_KEY = 'user';
+export const JWT_TOKEN_KEY = 'jwtToken';
