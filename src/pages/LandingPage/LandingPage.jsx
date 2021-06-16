@@ -13,6 +13,7 @@ export const LandingPage = (props) => {
   const classes = useLandingPageStyles();
 
   useEffect(() => {
+    setLoading(true);
     const token = getItem(JWT_TOKEN_KEY);
     // verifies whether there's not user or there's an user and it's not an empty object
     if (
@@ -21,9 +22,11 @@ export const LandingPage = (props) => {
         Object.keys(token).length === 0 &&
         token.constructor === Object)
     ) {
+      setLoading(false);
       props.history.push('/login');
     } else if (token) {
       // User's logged in
+      setLoading(false);
       props.history.push('/home');
     }
   }, []);
