@@ -7,10 +7,6 @@ export const MainPage = () => {
   const vehicles = useSelector(
     (state) => state.vehicles.value,
   );
-
-  const test = useSelector((state) => state.credits.value);
-
-  // console.log(test);
   if (vehicles) {
     return (
       <Box>

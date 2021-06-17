@@ -51,7 +51,10 @@ export const DrawerNavigation = withRouter((props) => {
       <List>
         {routes.map((route) => (
           <ListItem
-            onClick={() => props.history.push(route.path)}
+            onClick={() => {
+              props.history.push(route.path);
+              handleDrawerClose();
+            }}
             button
             key={route.title}
           >

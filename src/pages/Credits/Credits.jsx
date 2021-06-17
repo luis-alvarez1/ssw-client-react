@@ -1,9 +1,7 @@
 import {
   List,
   ListItem,
-  ListItemAvatar,
   Box,
-  Avatar,
   ListItemText,
   ListItemSecondaryAction,
   IconButton,

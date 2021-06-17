@@ -16,7 +16,7 @@ export const AppRouter = () => (
         <Route exact path='/' component={LandingPage} />
         <Route path='/login' component={Login} />
         <Route path='/create-user' component={CreateUser} />
-        <Route exact path='/home' component={MainRouter} />
+        <Route path='/home' component={MainRouter} />
       </Switch>
     </Router>
   </>
