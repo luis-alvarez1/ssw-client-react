@@ -33,12 +33,13 @@ export const useCarCardStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   primaryBtn: {
+    width: '75%',
     fontSize: '18px',
     marginTop: '5px',
     fontWeight: 'bold',
   },
   secondaryBtn: {
-    margin: '5px 0 ',
+    margin: '10px 0 ',
     fontWeight: 'bold',
   },
 }));

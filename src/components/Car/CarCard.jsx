@@ -81,6 +81,7 @@ export const CarCard = ({ car }) => {
               Buy now
             </Button>
             <Button
+              variant='outlined'
               color='secondary'
               className={classes.secondaryBtn}
             >

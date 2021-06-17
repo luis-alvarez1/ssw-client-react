@@ -1,17 +1,17 @@
 export const routes = [
   {
     title: 'Home',
-    path: '/',
+    path: '/home',
     icon: 'home',
   },
   {
     title: 'Credits',
-    path: '/user-credits',
+    path: '/home/user-credits',
     icon: 'request_quote',
   },
   {
     title: 'Offers',
-    path: '/offers',
+    path: '/home/offers',
     icon: 'local_offer',
   },
 ];

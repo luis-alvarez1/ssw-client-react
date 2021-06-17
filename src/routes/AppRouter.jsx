@@ -1,5 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 import { MainRouter } from '../core/routes/MainRouter';
 import { CreateUser } from '../pages/CreateUser/CreateUser';
 import { LandingPage } from '../pages/LandingPage/LandingPage';
@@ -12,7 +16,7 @@ export const AppRouter = () => (
         <Route exact path='/' component={LandingPage} />
         <Route path='/login' component={Login} />
         <Route path='/create-user' component={CreateUser} />
-        <Route path='/home' component={MainRouter} />
+        <Route exact path='/home' component={MainRouter} />
       </Switch>
     </Router>
   </>

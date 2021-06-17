@@ -12,10 +12,11 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import SearchIcon from '@material-ui/icons/Search';
+import { withRouter } from 'react-router-dom';
 import { DrawerNavigation } from '../Drawer/Drawer';
 import { useHeaderStyles } from './HeaderStyles';
 
-export const Header = () => {
+export const Header = withRouter((props) => {
   const classes = useHeaderStyles();
   const [drawerOpened, setDrawerOpened] = useState(false);
 
@@ -35,9 +36,11 @@ export const Header = () => {
           >
             <MenuIcon />
           </IconButton>
-          <div className={classes.titleWrapper}>
+          <div
+            className={classes.titleWrapper}
+            onClick={() => props.history.push('/')}
+          >
             <DirectionsCarIcon />
-
             <Typography
               className={classes.title}
               variant='h6'
@@ -64,7 +67,7 @@ export const Header = () => {
           <div className={classes.sectionDesktop}>
             <IconButton
               onClick={() => {
-                console.log('clicked');
+                props.history.push('/user-credits');
               }}
               edge='end'
               color='inherit'
@@ -111,4 +114,4 @@ export const Header = () => {
       />
     </div>
   );
-};
+});

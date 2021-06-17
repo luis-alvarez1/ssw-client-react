@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { Header } from '../../components/Header/Header';
+import { Credits } from '../../pages/Credits/Credits';
 import { MainPage } from '../../pages/MainPage/MainPage';
 import { getUserFromLocalStorage } from '../../utils/helpers/JWT';
 import { CREDITS, VEHICLES } from '../constants';
@@ -45,6 +46,8 @@ export const MainRouter = () => {
       <Header />
       <Switch>
         <Route path='/' component={MainPage} />
+        {/* TODO: FIX ROUTE */}
+        <Route path='/user-credits' component={Credits} />
       </Switch>
     </>
   );

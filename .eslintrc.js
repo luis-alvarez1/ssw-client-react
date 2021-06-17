@@ -32,5 +32,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-wrap-multilines': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
 };

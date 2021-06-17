@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const profileDialogSlice = createSlice({
-  name: 'vehicles',
+export const dialogSlice = createSlice({
+  name: 'dialog',
   initialState: {
     value: false,
   },
@@ -12,6 +12,6 @@ export const profileDialogSlice = createSlice({
   },
 });
 
-export const { setOpen } = profileDialogSlice.actions;
+export const { setOpen } = dialogSlice.actions;
 
-export default profileDialogSlice.reducer;
+export default dialogSlice.reducer;

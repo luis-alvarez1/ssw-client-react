@@ -10,7 +10,7 @@ export const MainPage = () => {
 
   const test = useSelector((state) => state.credits.value);
 
-  console.log(test);
+  // console.log(test);
   if (vehicles) {
     return (
       <Box>
