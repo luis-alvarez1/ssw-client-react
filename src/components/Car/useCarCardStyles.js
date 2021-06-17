@@ -46,10 +46,12 @@ export const useCarCardStyles = makeStyles((theme) => ({
 
 export const useCarListStyles = makeStyles(() => ({
   root: {
-    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     width: '80%',
     margin: '30px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr);',
+    gridGap: '10px',
   },
 }));

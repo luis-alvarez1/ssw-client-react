@@ -15,10 +15,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import { withRouter } from 'react-router-dom';
 import { DrawerNavigation } from '../Drawer/Drawer';
 import { useHeaderStyles } from './HeaderStyles';
+import { useUsersManagement } from '../../core/hooks/useProfileManagement';
+import { useInfoDialogManagement } from '../../core/hooks/useInfoDialogManagement';
 
 export const Header = withRouter((props) => {
   const classes = useHeaderStyles();
   const [drawerOpened, setDrawerOpened] = useState(false);
+
+  const { user } = useUsersManagement();
+  const { setOpen } = useInfoDialogManagement();
 
   const handleDrawerOpen = () => {
     setDrawerOpened(true);
@@ -88,6 +93,7 @@ export const Header = withRouter((props) => {
             <IconButton
               onClick={() => {
                 console.log('clicked');
+                setOpen(true);
               }}
               edge='end'
               color='inherit'
@@ -101,7 +107,7 @@ export const Header = withRouter((props) => {
                 <Typography
                   className={classes.iconBottomText}
                 >
-                  Account
+                  {user.name}
                 </Typography>
               </div>
             </IconButton>

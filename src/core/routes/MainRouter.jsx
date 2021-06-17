@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import { InfoDialog } from '../../components/Dialog/InfoDialog';
 import { Header } from '../../components/Header/Header';
 import { MainPage } from '../../pages/MainPage/MainPage';
 import { getUserFromLocalStorage } from '../../utils/helpers/JWT';
@@ -23,6 +24,7 @@ export const MainRouter = () => {
   useEffect(() => {
     setUserGlobalState();
   }, []);
+
   useQuery(VEHICLES, {
     onCompleted: ({ vehicles }) => {
       dispatch(setVehicles(vehicles));
@@ -43,6 +45,7 @@ export const MainRouter = () => {
   return (
     <>
       <Header />
+      <InfoDialog />
       <Switch>
         <Route path='/' component={MainPage} />
         {/* <Route path='/user-credits' component={Credits} /> */}
