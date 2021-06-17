@@ -38,7 +38,11 @@ export const Header = () => {
           <div className={classes.titleWrapper}>
             <DirectionsCarIcon />
 
-            <Typography className={classes.title} variant='h6' noWrap>
+            <Typography
+              className={classes.title}
+              variant='h6'
+              noWrap
+            >
               Supersportwagen
             </Typography>
           </div>
@@ -65,9 +69,15 @@ export const Header = () => {
               edge='end'
               color='inherit'
             >
-              <div className={classes.rightSectionIconContainer}>
+              <div
+                className={
+                  classes.rightSectionIconContainer
+                }
+              >
                 <MonetizationOnIcon />
-                <Typography className={classes.iconBottomText}>
+                <Typography
+                  className={classes.iconBottomText}
+                >
                   My Credits
                 </Typography>
               </div>
@@ -79,9 +89,15 @@ export const Header = () => {
               edge='end'
               color='inherit'
             >
-              <div className={classes.rightSectionIconContainer}>
+              <div
+                className={
+                  classes.rightSectionIconContainer
+                }
+              >
                 <AccountCircle />
-                <Typography className={classes.iconBottomText}>
+                <Typography
+                  className={classes.iconBottomText}
+                >
                   Account
                 </Typography>
               </div>
@@ -89,7 +105,10 @@ export const Header = () => {
           </div>
         </Toolbar>
       </AppBar>
-      <DrawerNavigation open={drawerOpened} setOpen={setDrawerOpened} />
+      <DrawerNavigation
+        open={drawerOpened}
+        setOpen={setDrawerOpened}
+      />
     </div>
   );
 };

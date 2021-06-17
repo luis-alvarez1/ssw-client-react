@@ -1,13 +1,8 @@
-/* eslint-disable no-debugger */
-
 import React, { useEffect, useState } from 'react';
-import { gql, useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
 import { LoadingIndicator } from '../../components/LoadingIndicator/LoadingIndicator';
 import { JWT_TOKEN_KEY } from '../../core/constants';
 import { getItem } from '../../utils/helpers/LocalStorage';
-import { setVehicles } from '../../core/redux/reducers/vehicle-reducers/vehicleReducers';
 
 export const LandingPage = (props) => {
   const [loading, setLoading] = useState(true);

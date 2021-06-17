@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Typography,
   Card,
@@ -9,45 +8,33 @@ import {
   Box,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useCarCardStyles } from './useCarCardStyles';
 import { capitalize } from '../../utils/helpers/FormatString';
 import { formatCurrency } from '../../utils/helpers/Currency';
+import { GEARBOX_BY_ID } from '../../core/constants';
 
 export const CarCard = ({ car }) => {
   const [gearbox, setGearbox] = useState(null);
   const classes = useCarCardStyles();
 
-  const GEARBOX_BY_ID = gql`
-    query getGearboxById($filter: FilterGearbox!) {
-      gearboxes(filter: $filter) {
-        id
-        type
-      }
-    }
-  `;
-  const { loading, data, error } = useQuery(GEARBOX_BY_ID, {
+  useQuery(GEARBOX_BY_ID, {
     variables: {
       filter: {
         id: car.gearbox,
       },
     },
-  });
-
-  useEffect(() => {
-    if (error) return <div>{error}</div>;
-    if (loading) return <div>{loading}</div>;
-    if (data) {
+    onCompleted: (data) => {
       setGearbox(data.gearboxes[0]);
-    }
-  }, []);
+    },
+  });
 
   return (
     <Card className={classes.root}>
       <CardMedia
         component='img'
         alt={car.name + car.model}
-        height='100'
+        height='150'
         image={car.imgUrl}
         title={car.name + car.model}
       />

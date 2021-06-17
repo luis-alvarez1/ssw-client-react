@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 export const useCarCardStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 300,
+    maxWidth: 350,
     marginLeft: '20px',
   },
   cardTitle: {
@@ -45,7 +45,7 @@ export const useCarCardStyles = makeStyles((theme) => ({
 
 export const useCarListStyles = makeStyles(() => ({
   root: {
-    display: 'block',
+    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     width: '80%',

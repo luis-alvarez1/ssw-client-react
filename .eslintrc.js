@@ -30,5 +30,7 @@ module.exports = {
     'react/self-closing-comp': 'warn',
     'operator-linebreak': 'off',
     'react/prop-types': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-wrap-multilines': 'off',
   },
 };

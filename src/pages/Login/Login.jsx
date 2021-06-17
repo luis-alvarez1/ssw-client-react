@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-wrap-multilines */
 import {
   Box,
   TextField,
@@ -20,18 +19,15 @@ import {
   Visibility,
   VisibilityOff,
 } from '@material-ui/icons';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useLoginStyles } from './LoginStyles';
 import Car from '../../core/assets/car.png';
+import { fireAlertNotification } from '../../utils/helpers/Alerts';
+import { setItem } from '../../utils/helpers/LocalStorage';
 import {
-  fireAlert,
-  fireAlert as fireNotification,
-} from '../../utils/helpers/Alerts';
-import {
-  getItem,
-  setItem,
-} from '../../utils/helpers/LocalStorage';
-import { JWT_TOKEN_KEY } from '../../core/constants';
+  AUTH_USER,
+  JWT_TOKEN_KEY,
+} from '../../core/constants';
 
 export const Login = (props) => {
   const classes = useLoginStyles();
@@ -60,14 +56,6 @@ export const Login = (props) => {
     event.preventDefault();
   };
 
-  const AUTH_USER = gql`
-    mutation authUser($user: AuthUserInput) {
-      authUser(user: $user) {
-        token
-      }
-    }
-  `;
-
   const [authUser] = useMutation(AUTH_USER);
 
   const handleSubmit = async (e) => {
@@ -75,7 +63,7 @@ export const Login = (props) => {
     const { email, password } = formValues;
 
     if (email === '' || password === '') {
-      fireNotification(
+      fireAlertNotification(
         'Fields missing',
         'All fieds are required',
         'error',
@@ -93,10 +81,9 @@ export const Login = (props) => {
       });
       const { token } = data.authUser;
       setItem(JWT_TOKEN_KEY, token);
-      console.log(getItem(JWT_TOKEN_KEY));
       props.history.push('/');
     } catch (error) {
-      fireAlert(
+      fireAlertNotification(
         'Error!',
         'Whether email or password are not valid, please check and try again.',
         'error',
@@ -176,7 +163,7 @@ export const Login = (props) => {
                 <PersonAdd style={{ margin: '0 10px' }} />
                 <Link to='/create-user'>
                   Doesn&lsquo;t have an account? Create one
-                  here.
+                  here
                 </Link>
               </Box>
 
