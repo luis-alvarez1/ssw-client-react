@@ -1,25 +1,44 @@
+import { gql, useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
 import React from 'react';
-import { CarCard } from '../../components/Car/CarCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { CarList } from '../../components/Car/CarList';
+import { setVehicles } from '../../core/redux/reducers/vehicle-reducers/vehicleReducers';
 
 export const MainPage = () => {
-  console.log('entró al main');
-  const car = {
-    _id: '607c60a5708fa10824fce345',
-    name: 'Mazda',
-    model: '2',
-    year: 2021,
-    colour: 'red',
-    price: 17222,
-    cylinderCapacity: '1500',
-    gearbox: 1,
-    stock: 5,
-    imgUrl:
-      'https://www.mazda.com.co/globalassets/cars/mazda2-sport-2021/360/prime-mt/red/0024-prime-mt.jpg',
-  };
-  return (
-    <Box>
-      <CarCard car={car} />
-    </Box>
+  const dispatch = useDispatch();
+
+  const VEHICLES = gql`
+    query vehicles {
+      vehicles {
+        name
+        model
+        year
+        colour
+        price
+        cylinderCapacity
+        gearbox
+        stock
+        imgUrl
+      }
+    }
+  `;
+
+  useQuery(VEHICLES, {
+    onCompleted: ({ vehicles: vehiclesResp }) => {
+      dispatch(setVehicles(vehiclesResp));
+    },
+  });
+
+  const vehicles = useSelector(
+    (state) => state.vehicles.value,
   );
+
+  if (vehicles) {
+    return (
+      <Box>
+        <CarList vehicles={vehicles} />
+      </Box>
+    );
+  }
 };

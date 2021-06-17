@@ -13,11 +13,16 @@ import {
 } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { withRouter } from 'react-router-dom';
 import { useDrawerStyles } from './DrawerStyles';
 import theme from '../../core/theme/theme';
 import { routes } from '../../routes/router/routes';
+import { removeItem } from '../../utils/helpers/LocalStorage';
+import { JWT_TOKEN_KEY } from '../../core/constants';
+import { fireAlertWithConfirmation } from '../../utils/helpers/Alerts';
 
-export const DrawerNavigation = ({ open, setOpen }) => {
+export const DrawerNavigation = withRouter((props) => {
+  const { open, setOpen } = props;
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -45,7 +50,11 @@ export const DrawerNavigation = ({ open, setOpen }) => {
       <Divider />
       <List>
         {routes.map((route) => (
-          <ListItem button key={route.title}>
+          <ListItem
+            onClick={() => props.history.push(route.path)}
+            button
+            key={route.title}
+          >
             <ListItemIcon>
               <Icon>{route.icon}</Icon>
             </ListItemIcon>
@@ -53,7 +62,21 @@ export const DrawerNavigation = ({ open, setOpen }) => {
           </ListItem>
         ))}
       </List>
-      <ListItem button key='logout'>
+      <ListItem
+        onClick={() => {
+          fireAlertWithConfirmation(
+            'Do you really want to logout?',
+            'Your session will expire after this and you will have to log in again',
+            'Yes, log me out',
+            () => {
+              removeItem(JWT_TOKEN_KEY);
+              props.history.push('/');
+            },
+          );
+        }}
+        button
+        key='logout'
+      >
         <ListItemIcon>
           <Icon>logout</Icon>
         </ListItemIcon>
@@ -61,7 +84,7 @@ export const DrawerNavigation = ({ open, setOpen }) => {
       </ListItem>
     </Drawer>
   );
-};
+});
 
 DrawerNavigation.propTypes = {
   open: PropTypes.bool,

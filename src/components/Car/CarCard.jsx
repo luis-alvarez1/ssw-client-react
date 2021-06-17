@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import {
   Typography,
   Card,
-  CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
   Button,
@@ -14,6 +12,7 @@ import PropTypes from 'prop-types';
 import { gql, useQuery } from '@apollo/client';
 import { useCarCardStyles } from './useCarCardStyles';
 import { capitalize } from '../../utils/helpers/FormatString';
+import { formatCurrency } from '../../utils/helpers/Currency';
 
 export const CarCard = ({ car }) => {
   const [gearbox, setGearbox] = useState(null);
@@ -47,18 +46,18 @@ export const CarCard = ({ car }) => {
     <Card className={classes.root}>
       <CardMedia
         component='img'
-        alt={car.name}
+        alt={car.name + car.model}
         height='100'
         image={car.imgUrl}
-        title={car.name}
+        title={car.name + car.model}
       />
       <CardContent>
         <Typography
           gutterBottom
           className={classes.cardTitle}
         >
-          {car.name} - {car.model} (
-          <small>{car.year}</small>)
+          {car.name} - {car.model}{' '}
+          <small>({car.year})</small>
         </Typography>
         <Typography className={classes.cardSubtitle}>
           <strong>Features:</strong>
@@ -81,8 +80,27 @@ export const CarCard = ({ car }) => {
             {car.stock ? `${car.stock} units` : 'N/A'}
           </li>
         </ul>
-        <Typography />
-        <Box />
+
+        <Box className={classes.footer}>
+          <Typography className={classes.price}>
+            {formatCurrency(car.price)}
+          </Typography>
+          <Box className={classes.actions}>
+            <Button
+              className={classes.primaryBtn}
+              variant='contained'
+              color='primary'
+            >
+              Buy now
+            </Button>
+            <Button
+              color='secondary'
+              className={classes.secondaryBtn}
+            >
+              View Details
+            </Button>
+          </Box>
+        </Box>
       </CardContent>
     </Card>
   );

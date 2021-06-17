@@ -1,17 +1,16 @@
 /* eslint-disable no-debugger */
-import {
-  CircularProgress,
-  Typography,
-} from '@material-ui/core';
+
 import React, { useEffect, useState } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { Box } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { LoadingIndicator } from '../../components/LoadingIndicator/LoadingIndicator';
 import { JWT_TOKEN_KEY } from '../../core/constants';
 import { getItem } from '../../utils/helpers/LocalStorage';
-import { useLandingPageStyles } from './LandingPageStyles';
+import { setVehicles } from '../../core/redux/reducers/vehicle-reducers/vehicleReducers';
 
 export const LandingPage = (props) => {
   const [loading, setLoading] = useState(true);
-  const classes = useLandingPageStyles();
-
   useEffect(() => {
     setLoading(true);
     const token = getItem(JWT_TOKEN_KEY);
@@ -25,25 +24,17 @@ export const LandingPage = (props) => {
       setLoading(false);
       props.history.push('/login');
     } else if (token) {
-      // User's logged in
       setLoading(false);
+      // User's logged in
       props.history.push('/home');
     }
   }, []);
 
   return (
     <>
-      {loading && (
-        <div className={classes.root}>
-          <CircularProgress />
-          <Typography
-            variant='h6'
-            style={{ marginTop: '10px' }}
-          >
-            Loading...
-          </Typography>
-        </div>
-      )}
+      <Box style={{ height: window.innerHeight }}>
+        {loading && <LoadingIndicator />}
+      </Box>
     </>
   );
 };

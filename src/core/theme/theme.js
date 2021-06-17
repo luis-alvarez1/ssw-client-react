@@ -13,6 +13,10 @@ const theme = createMuiTheme({
     pink: '#F0A3A1',
 
     white: '#ffffff',
+
+    warning: {
+      main: '#D33',
+    },
   },
 });
 
