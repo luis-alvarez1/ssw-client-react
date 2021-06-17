@@ -5,12 +5,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
 } from '@material-ui/core';
 import React from 'react';
 import { useInfoDialogManagement } from '../../core/hooks/useInfoDialogManagement';
 import { useUsersManagement } from '../../core/hooks/useProfileManagement';
-import { capitalize } from '../../utils/helpers/FormatString';
 
 export const InfoDialog = () => {
   const { open, setOpen } = useInfoDialogManagement();
