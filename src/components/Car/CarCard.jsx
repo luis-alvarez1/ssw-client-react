@@ -52,7 +52,9 @@ export const CarCard = ({ car }) => {
         <ul className={classes.featureList}>
           <li>
             <strong>Cylinder capacity: </strong>
-            {car.year ? `${car.year}c.c.` : 'N/A'}
+            {car.year
+              ? `${car.cylinderCapacity}c.c.`
+              : 'N/A'}
           </li>
           <li>
             <strong>Colour: </strong>
